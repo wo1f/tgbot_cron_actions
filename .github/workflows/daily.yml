@@ -1,0 +1,26 @@
+name: Daily message
+
+on:
+  schedule:
+    - cron: '48 21 * * *'
+  workflow_dispatch:
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install pyTelegramBotAPI==4.4.0
+
+      - name: Send message
+        env:
+          TgBot23_48_TOKEN: ${{ secrets.TGBOT_TOKEN }}
+          TgBot23_48_CHANNEL_ID: ${{ secrets.TGBOT_CHANNEL_ID }}
+          TgBot23_48_CONFIG: ${{ secrets.TGBOT_CONFIG }}
+        run: python main.py

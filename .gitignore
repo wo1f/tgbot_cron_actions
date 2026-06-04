@@ -1,0 +1,8 @@
+# Личные данные (даты и тексты сообщений) — не коммитим
+config.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
